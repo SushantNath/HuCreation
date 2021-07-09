@@ -1,42 +1,20 @@
 {
   "projectType": [
-    "sap.watt.saptoolsets.fiori.project.ui5template.smartProject",
     "sap.watt.uitools.ide.fiori",
     "com.watt.common.builder.sapui5clientbuild"
   ],
-  "build": {
-    "targetFolder": "dist",
-    "sourceFolder": "webapp",
-    "excludedFolders": [
-      "test"
-    ],
-    "buildRequired": true,
-    "lastBuildDateTime": "Thu, 08 Jul 2021 14:36:14 GMT"
-  },
   "generation": [
     {
-      "templateId": "ui5template.smartTemplateCommon",
-      "templateVersion": "1.40.12",
-      "dateTimeStamp": "Wed, 07 Jul 2021 15:34:28 GMT"
+      "templateId": "ui5template.basicSAPUI5ApplicationProjectCommon",
+      "templateVersion": "1.32.0",
+      "dateTimeStamp": "Fri, 09 Jul 2021 12:00:54 GMT"
     },
     {
-      "templateId": "ui5template.smartTemplate",
+      "templateId": "ui5template.basicSAPUI5ApplicationProject",
       "templateVersion": "1.40.12",
-      "dateTimeStamp": "Wed, 07 Jul 2021 15:34:29 GMT"
-    },
-    {
-      "templateId": "ui5template.listreportextension",
-      "templateVersion": "1.0.0",
-      "dateTimeStamp": "Wed, 07 Jul 2021 17:31:05 GMT"
+      "dateTimeStamp": "Fri, 09 Jul 2021 12:00:54 GMT"
     }
   ],
-  "mockpreview": {
-    "mockUri": "/DE4/sap/opu/odata/iwbep/RMTSAMPLEFLIGHT_2",
-    "metadataFilePath": "",
-    "loadJSONFiles": false,
-    "loadCustomRequests": false,
-    "mockRequestsFilePath": ""
-  },
   "codeCheckingTriggers": {
     "notifyBeforePush": true,
     "notifyBeforePushLevel": "Error",
@@ -56,8 +34,11 @@
       "js": "fioriJsValidator"
     }
   },
-  "deploy": {
-    "destination": "DE4",
-    "name": "ZINBOUNDHU"
+  "build": {
+    "buildRequired": true,
+    "sourceFolder": "webapp",
+    "targetFolder": "dist",
+    "excludedFolders": [],
+    "excludedFiles": []
   }
 }

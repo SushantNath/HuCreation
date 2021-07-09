@@ -1,9 +1,27 @@
-jQuery.sap.declare("inbound.Component");
-sap.ui.getCore().loadLibrary("sap.ui.generic.app");
-jQuery.sap.require("sap.ui.generic.app.AppComponent");
+sap.ui.define([
+	"sap/ui/core/UIComponent",
+	"sap/ui/Device",
+	"com/sap/huCreationinboundHu/model/models"
+], function(UIComponent, Device, models) {
+	"use strict";
 
-sap.ui.generic.app.AppComponent.extend("inbound.Component", {
-	metadata: {
-		"manifest": "json"
-	}
+	return UIComponent.extend("com.sap.huCreationinboundHu.Component", {
+
+		metadata: {
+			manifest: "json"
+		},
+
+		/**
+		 * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
+		 * @public
+		 * @override
+		 */
+		init: function() {
+			// call the base component's init function
+			UIComponent.prototype.init.apply(this, arguments);
+
+			// set the device model
+			this.setModel(models.createDeviceModel(), "device");
+		}
+	});
 });
