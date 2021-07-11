@@ -1,0 +1,46 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.f"  xmlns:fb="sap.ui.comp.filterbar">
+	
+		<fb:FilterBar class="filterLabels" id="filterbar" reset="onReset" search="onApplyFilter" useToolbar="false" showGoOnFB="true">
+						<fb:filterItems>
+							<!--  Filter Items Inbound filter-->
+							<fb:FilterItem label="{i18n>sapInbound}" name="inboundFilter">
+								<fb:control>
+									<Input id="inboundId"  ></Input>
+								</fb:control>
+							</fb:FilterItem>
+						
+							<!--ASN number Filter-->
+							<fb:FilterItem name="asnNumberFilter" label="{i18n>asnNumber}">
+								<fb:control>
+									<Input id="asnNumberrId"  ></Input>
+								
+								</fb:control>
+							</fb:FilterItem>
+							<!--Material code filter-->
+							<fb:FilterItem name="materialCodeFilter" label="{i18n>materialCode}">
+								<fb:control>
+									<Input id="materialCodeId"  ></Input>
+									<!--<RangeSlider showAdvancedTooltip="true"  min="0" max="100" width="80%" class="sapUiMediumMarginBottom" />-->
+								</fb:control>
+							</fb:FilterItem>
+							<!--Batch number Filter-->
+							<fb:FilterItem name="batchNumberFilter" label="{i18n>batchNumber}">
+								<fb:control>
+									<Input id="batchNumberId"  ></Input>
+								
+								</fb:control>
+							</fb:FilterItem>
+							<!-- HUs created Filter-->
+							<fb:FilterItem name="huFilter">
+								<fb:control>
+                                 <CheckBox text="View HUs created" id="huId" />
+								</fb:control>
+							</fb:FilterItem>
+						
+						</fb:filterItems>
+					</fb:FilterBar>
+	
+	</core:FragmentDefinition>

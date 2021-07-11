@@ -1,0 +1,60 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" >
+		<Table id="idInboundsTable" mode="MultiSelect" items="{ path : 'inboundTableModel>/docTableSet'}" selectionChange="onSelectionChange"
+						itemPress="handleOperationSelect" modelContextChange="onModelContextChange">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{i18n>items}"/>
+								<ToolbarSpacer/>
+								
+								<Button text="{i18n>createHu}" type="Accept" press="onCreateHus"/>
+								<Button text="{i18n>calculate}" type="Accept" press="onCalculate"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column >
+								<Text text="{i18n>materialCode}"/>
+							</Column>
+							<Column >
+								<Text text="{i18n>description}"/>
+							</Column>
+							<Column >
+								<Text text="{i18n>batchNum}"/>
+							</Column>
+							<Column >
+								<Text text="{i18n>numOfHus}"/>
+							</Column>
+							<Column >
+								<Text text="{i18n>totalQuantity}"/>
+							</Column>
+							<Column >
+								<Text text="{i18n>unit}"/>
+							</Column>
+							<Column >
+								<Text text="{i18n>sampleQuantity}"/>
+							</Column>
+							<Column >
+								<Text text="{i18n>quantityPerHu}"/>
+							</Column>
+						
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectIdentifier title="{}" text="{inboundTableModel>Salesorg}"/>
+									<Text text="{inboundTableModel>DeliveryNo}"/>
+									<Text text="{inboundTableModel>Externaldelno}"/>
+									<Text text="{inboundTableModel>Soldtoparty}"/>
+									<Text text="{inboundTableModel>Shiptoparty}"/>
+									<Text text="{inboundTableModel>Imminvoiceno}"/>
+									<Text text="{inboundTableModel>Imminvreversalno}"/>
+									<Text text="{inboundTableModel>Revenueinvoice}"/>
+								
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+	
+		</core:FragmentDefinition>

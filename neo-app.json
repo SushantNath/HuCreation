@@ -20,6 +20,15 @@
         "version": "1.65.16"
       },
       "description": "SAPUI5 Test Resources"
+    },
+      {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "DE4",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "DE4"
     }
   ],
   "sendWelcomeFileRedirect": true

@@ -12,6 +12,18 @@
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.40.12"
+		},
+			"dataSources": {
+			"inboundDatasource": {
+				"uri": "/sap/opu/odata/sap/ZOTC_DELIVERY_COGS_REVNU_REC_SRV",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"useBatch": true,
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "None"
+				}
+			}
 		}
 	},
 
@@ -64,6 +76,9 @@
 				"settings": {
 					"bundleName": "com.sap.huCreationinboundHu.i18n.i18n"
 				}
+			},
+				"": {
+				"dataSource": "inboundDatasource"
 			}
 		},
 		"resources": {
