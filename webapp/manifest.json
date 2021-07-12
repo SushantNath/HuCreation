@@ -77,7 +77,7 @@
 					"bundleName": "com.sap.huCreationinboundHu.i18n.i18n"
 				}
 			},
-				"": {
+				"inboundModel": {
 				"dataSource": "inboundDatasource"
 			}
 		},
