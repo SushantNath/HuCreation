@@ -2,8 +2,10 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"sap/m/MessageToast",
-	"com/sap/huCreationinboundHu/utilities/Formatter"
-], function(Controller, MessageBox, MessageToast, Formatter) {
+	"com/sap/huCreationinboundHu/utilities/Formatter",
+	"sap/ui/core/UIComponent"
+	
+], function(Controller, MessageBox, MessageToast, Formatter,UIComponent) {
 	"use strict";
 
 	return Controller.extend("com.sap.huCreationinboundHu.controller.homeView", {
@@ -109,7 +111,7 @@ sap.ui.define([
 			var selectedArray = [];
 			var invTableLength = this.getView().byId("idInboundsTable").getSelectedItems();
 
-			if (invTableLength.length > 0) {
+		/*	if (invTableLength.length > 0) {
 				console.log("table length > 0");
 				var message1 = "Do you want to proceed with calculation of HUs?";
 
@@ -126,9 +128,13 @@ sap.ui.define([
 			} else {
 
 				MessageBox.show(this.getOwnerComponent().getModel("i18n").getResourceBundle().getText("invoiceSelection"));
-			}
+			} */
+			
+			var oRouter = UIComponent.getRouterFor(this);
+				oRouter.navTo("huCreationPattern");
 
 		}
+		
 
 	});
 });

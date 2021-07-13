@@ -13,7 +13,7 @@
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.40.12"
 		},
-			"dataSources": {
+		"dataSources": {
 			"inboundDatasource": {
 				"uri": "/sap/opu/odata/sap/ZOTC_DELIVERY_COGS_REVNU_REC_SRV",
 				"type": "OData",
@@ -26,7 +26,6 @@
 			}
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -45,10 +44,8 @@
 		"supportedThemes": [
 			"sap_hcb",
 			"sap_belize"
-
 		]
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "com.sap.huCreationinboundHu.view.homeView",
@@ -77,14 +74,72 @@
 					"bundleName": "com.sap.huCreationinboundHu.i18n.i18n"
 				}
 			},
-				"inboundModel": {
+			"inboundModel": {
 				"dataSource": "inboundDatasource"
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+			"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "com.sap.huCreationinboundHu.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+			{
+					"name": "RouteSettings",
+					"pattern": "RouteSettings",
+					"target": [
+						"TargetSettings"
+					]
+				},
+				{
+					"name": "homePattern",
+					"pattern": "homePattern",
+					"target": [
+						"homeTarget"
+					]
+				},
+					{
+					"name": "huCreationPattern",
+					"pattern": "huCreationPattern",
+					"target": [
+						"huCreationTarget"
+					]
+				}
+				
+			],
+			"targets": {
+				"TargetSettings": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "homeView"
+				},
+					"huCreationTarget": {
+					"viewType": "XML",
+					"viewName": "huCreation"
+				},
+				"homeTarget": {
+					"viewType": "XML",
+					"viewName": "homeView"
+				}
+			
+			}
 		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zhucreation/webapp",
+		"_version": "1.1.0"
 	}
 }

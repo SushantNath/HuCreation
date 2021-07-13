@@ -1,6 +1,6 @@
 <mvc:View controllerName="com.sap.huCreationinboundHu.controller.homeView" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
-	<App>
+	<App id="app">
 		<pages>
 			<Page>
 				<content>

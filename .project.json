@@ -7,12 +7,17 @@
     {
       "templateId": "ui5template.basicSAPUI5ApplicationProjectCommon",
       "templateVersion": "1.32.0",
-      "dateTimeStamp": "Fri, 09 Jul 2021 12:00:54 GMT"
+      "dateTimeStamp": "Mon, 12 Jul 2021 16:11:34 GMT"
     },
     {
       "templateId": "ui5template.basicSAPUI5ApplicationProject",
       "templateVersion": "1.40.12",
-      "dateTimeStamp": "Fri, 09 Jul 2021 12:00:54 GMT"
+      "dateTimeStamp": "Mon, 12 Jul 2021 16:11:35 GMT"
+    },
+    {
+      "templateId": "ui5template.basicSAPUI5ApplicationComponent",
+      "templateVersion": "1.4.0",
+      "dateTimeStamp": "Tue, 13 Jul 2021 11:00:49 GMT"
     }
   ],
   "codeCheckingTriggers": {
@@ -39,6 +44,11 @@
     "sourceFolder": "webapp",
     "targetFolder": "dist",
     "excludedFolders": [],
-    "excludedFiles": []
+    "excludedFiles": [],
+    "lastBuildDateTime": "Tue, 13 Jul 2021 10:37:06 GMT"
+  },
+  "deploy": {
+    "destination": "DE4",
+    "name": "ZHUCREATION"
   }
 }
