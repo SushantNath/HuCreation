@@ -1,22 +1,19 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-		"sap/ui/core/routing/History",
-			"sap/ui/core/UIComponent",
-			"com/sap/huCreationinboundHu/utilities/Formatter"
-], function(Controller,History,UIComponent,Formatter) {
-	
+	"sap/ui/core/routing/History",
+	"sap/ui/core/UIComponent",
+	"com/sap/huCreationinboundHu/utilities/Formatter"
+], function(Controller, History, UIComponent, Formatter) {
+
 	"use strict";
 
 	return Controller.extend("com.sap.huCreationinboundHu.controller.huCreation", {
-			formatter: Formatter,
-		
-		
-		
-			onNavBack: function () {
-				
-			
-				var oRouter = UIComponent.getRouterFor(this);
-				oRouter.navTo("homePattern", true);
+		formatter: Formatter,
+
+		onNavBack: function() {
+
+			var oRouter = UIComponent.getRouterFor(this);
+			oRouter.navTo("homePattern", true);
 
 		},
 
@@ -25,11 +22,11 @@ sap.ui.define([
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf com.sap.huCreationinboundHu.view.huCreation
 		 */
-			getvalue: function() {
-				
-					var aFilterData = [];
-				
-					var shipToFilter = new sap.ui.model.Filter("Shiptoparty", sap.ui.model.FilterOperator.EQ, "");
+		getvalue: function() {
+
+			var aFilterData = [];
+
+			var shipToFilter = new sap.ui.model.Filter("Shiptoparty", sap.ui.model.FilterOperator.EQ, "");
 			var soldToFilter = new sap.ui.model.Filter("Soldtoparty", sap.ui.model.FilterOperator.EQ, "");
 			var extDelFilter = new sap.ui.model.Filter("Externaldelno", sap.ui.model.FilterOperator.EQ, "");
 
@@ -69,30 +66,30 @@ sap.ui.define([
 				},
 				filters: aFilterData
 			});
-		
-			},
-			
-			onPrintHus: function(oEvent) {
-				
-				var oTarget = this.getView(),
-            sTargetId = oEvent.getSource().data("targetId");
-            
-        if (sTargetId) {
-            oTarget = oTarget.byId(sTargetId);
-        }
-        
-        if (oTarget) {
-            var $domTarget = oTarget.$()[0],
-                sTargetContent = $domTarget.innerHTML,
-                sOriginalContent = document.body.innerHTML;
-                
-            document.body.innerHTML = sTargetContent;
-            window.print();
-            document.body.innerHTML = sOriginalContent;
-        } else {
-            jQuery.sap.log.error("onPrint needs a valid target container [view|data:targetId=\"SID\"]");
-        }
+
+		},
+
+		onPrintHus: function(oEvent) {
+
+			var oTarget = this.getView(),
+				sTargetId = oEvent.getSource().data("targetId");
+
+			if (sTargetId) {
+				oTarget = oTarget.byId(sTargetId);
 			}
+
+			if (oTarget) {
+				var $domTarget = oTarget.$()[0],
+					sTargetContent = $domTarget.innerHTML,
+					sOriginalContent = document.body.innerHTML;
+
+				document.body.innerHTML = sTargetContent;
+				window.print();
+				document.body.innerHTML = sOriginalContent;
+			} else {
+				jQuery.sap.log.error("onPrint needs a valid target container [view|data:targetId=\"SID\"]");
+			}
+		}
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
