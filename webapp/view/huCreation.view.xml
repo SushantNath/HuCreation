@@ -3,20 +3,15 @@
 	<App>
 		<pages>
 			<Page title="Title" showNavButton="true" navButtonPress="onNavBack">
-				
 				<content>
-					
-					<Button text="Get Value" id="dataButton" press="getvalue"> 
-					
-				</Button>
-						<Table id="idInboundsTable"  items="{ path : 'inboundTableModel>/inboundTableSet'}" selectionChange="onSelectionChange"
+					<Button text="Get Value" id="dataButton" press="getvalue"></Button>
+					<Table id="idInboundsTable" items="{ path : 'inboundTableModel>/inboundTableSet'}" selectionChange="onSelectionChange"
 						itemPress="handleOperationSelect" modelContextChange="onModelContextChange">
 						<headerToolbar>
 							<Toolbar>
 								<Title text="{i18n>items}"/>
 								<ToolbarSpacer/>
-								
-								<Button text="Print" type="Accept"  press="onPrintHus"/>
+								<Button text="Print" type="Accept" press="onPrintHus"/>
 								<Button text="Delete" type="Accept" press="onDeleteHus"/>
 							</Toolbar>
 						</headerToolbar>
@@ -36,7 +31,7 @@
 							<Column >
 								<Text text="{i18n>sampleQuantity}"/>
 							</Column>
-						<!--	<Column >
+							<!--	<Column >
 								<Text text="{i18n>unit}"/>
 							</Column>
 							<Column >
@@ -45,7 +40,6 @@
 							<Column >
 								<Text text="{i18n>quantityPerHu}"/>
 							</Column>-->
-						
 						</columns>
 						<items>
 							<ColumnListItem>
@@ -58,12 +52,10 @@
 									<!--<Text text="{inboundTableModel>Imminvoiceno}"/>
 									<Text text="{inboundTableModel>Imminvreversalno}"/>
 									<Text text="{inboundTableModel>Revenueinvoice}"/>-->
-								
 								</cells>
 							</ColumnListItem>
 						</items>
 					</Table>
-	
 				</content>
 			</Page>
 		</pages>
