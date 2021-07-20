@@ -29,6 +29,15 @@
         "entryPath": "/sap/opu/odata"
       },
       "description": "DE4"
+    },
+     {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "es1",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "es1"
     }
   ],
   "sendWelcomeFileRedirect": true

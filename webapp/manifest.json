@@ -23,6 +23,13 @@
 					"defaultBindingMode": "TwoWay",
 					"defaultCountMode": "None"
 				}
+			},
+			"Northwind": {
+				"uri": "/sap/opu/odata/iwbep/GWSAMPLE_BASIC/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
 			}
 		}
 	},
@@ -76,6 +83,9 @@
 			},
 			"inboundModel": {
 				"dataSource": "inboundDatasource"
+			},
+			"northwindModel": {
+				"dataSource": "northwindDatasource"
 			}
 		},
 		"resources": {
@@ -85,7 +95,7 @@
 				}
 			]
 		},
-			"routing": {
+		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
@@ -96,7 +106,7 @@
 				"clearControlAggregation": false
 			},
 			"routes": [
-			{
+				{
 					"name": "RouteSettings",
 					"pattern": "RouteSettings",
 					"target": [
@@ -110,14 +120,13 @@
 						"homeTarget"
 					]
 				},
-					{
+				{
 					"name": "huCreationPattern",
 					"pattern": "huCreationPattern",
 					"target": [
 						"huCreationTarget"
 					]
 				}
-				
 			],
 			"targets": {
 				"TargetSettings": {
@@ -126,7 +135,7 @@
 					"clearControlAggregation": false,
 					"viewName": "homeView"
 				},
-					"huCreationTarget": {
+				"huCreationTarget": {
 					"viewType": "XML",
 					"viewName": "huCreation"
 				},
@@ -134,7 +143,6 @@
 					"viewType": "XML",
 					"viewName": "homeView"
 				}
-			
 			}
 		}
 	},
