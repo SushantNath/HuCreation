@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog id="shipToDialog" contentWidth ="85%"
+	multiSelect="false"
+		noDataText="{i18n>noDataText}"
+		search= "handleSearchShipTo"
+		confirm="handleCloseShipTo"
+		cancel="_handleValueHelpClose"
+		
+		items="{
+			path : 'shipToModel>/ShipToPartySet'}">
+		<ColumnListItem>
+			<cells>
+				<ObjectIdentifier 
+				title="{shipToModel>Kunnr}" 
+				 />
+					<Text text="{shipToModel>Mcod1}" />	
+					<Text text="{shipToModel>Land1}" />	
+					
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="12em">
+				<header>
+					<Text text="{i18n>shipToCode}" />
+				</header>
+			</Column>
+				<Column width="12em">
+				<header>
+					<Text text="{i18n>text}" />
+				</header>
+			</Column>
+				<Column width="12em">
+				<header>
+					<Text text="{i18n>shipToCountry}" />
+				</header>
+			</Column>
+			
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

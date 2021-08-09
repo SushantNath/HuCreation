@@ -15,7 +15,8 @@
 							<!--ASN number Filter-->
 							<fb:FilterItem name="asnNumberFilter" label="{i18n>asnNumber}">
 								<fb:control>
-									<Input id="asnNumberrId"  ></Input>
+									<Input id="asnNumberrId" showValueHelp="true" valueHelpOnly="false"
+										valueHelpRequest="handleValueShipTo" ></Input>
 								
 								</fb:control>
 							</fb:FilterItem>

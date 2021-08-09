@@ -3,9 +3,11 @@ sap.ui.define([
 	"sap/m/MessageBox",
 	"sap/m/MessageToast",
 	"com/sap/huCreationinboundHu/utilities/Formatter",
-	"sap/ui/core/UIComponent"
+	"sap/ui/core/UIComponent",
+		"sap/ui/model/Filter",
+	'sap/ui/model/Sorter'
 	
-], function(Controller, MessageBox, MessageToast, Formatter,UIComponent) {
+], function(Controller, MessageBox, MessageToast, Formatter,UIComponent,Filter, Sorter) {
 	"use strict";
 
 	return Controller.extend("com.sap.huCreationinboundHu.controller.homeView", {
@@ -106,6 +108,76 @@ sap.ui.define([
 				MessageBox.show(this.getOwnerComponent().getModel("i18n").getResourceBundle().getText("invoiceSelection"));
 			}
 
+		},
+		
+			/* Logic to fetch filter options for Ship To */
+
+		handleValueShipTo: function (oEvent) {
+
+			this.loadShipTo();
+			var oView = this.getView();
+			var that = this;
+
+			// create value help dialog
+			if (!this._valueHelpDialogShipTo) {
+				this._valueHelpDialogShipTo = sap.ui.xmlfragment(
+					this.getView().getId(), "com.sap.huCreationinboundHu.fragments.shipTo",
+					this
+				);
+
+				this.getView().addDependent(this._valueHelpDialogShipTo);
+			}
+
+			// open value help dialog filtered by the input value
+			this._valueHelpDialogShipTo.open();
+
+		},
+
+		loadShipTo: function () {
+			var oModel = this.getView().getModel("inboundModel");
+			var that = this;
+			var oView = this.getView();
+			sap.ui.core.BusyIndicator.show();
+			oModel.read("/DebiaSet", {
+
+				success: function (oData, Response) {
+
+					// var revInvModel = new sap.ui.model.json.JSONModel();
+					// oView.setModel(revInvModel, "revInvoiceModel");
+					// oView.getModel("revInvoiceModel").setProperty("/revInvoiceSet", oData.results);
+
+					// var immInvoiceModel = new sap.ui.model.json.JSONModel(oData);
+					// 	that.getView().setModel(immInvoiceModel, "immInvoiceData");
+					// 	immInvoiceModel.setProperty("/immInvoiceSet", oData.results);
+
+					var shipToModel = new sap.ui.model.json.JSONModel();
+					oView.setModel(shipToModel, "shipToModel");
+					oView.getModel("shipToModel").setProperty("/ShipToPartySet", oData.results);
+					sap.ui.core.BusyIndicator.hide();
+					console.log("Inside Success function revenue invoice", oData.results);
+				},
+
+				error: function (oData, Response, oError) {
+					console.log("Inside Error function");
+				}
+
+			});
+
+			console.log("Inside Filter options");
+
+		},
+
+		//Code to hadle serach inside revenue invoice value help
+		handleSearchShipTo: function (oEvent) {
+			var sValue = oEvent.getParameter("value");
+            
+			var filter1 = new Filter("Land1", sap.ui.model.FilterOperator.Contains, sValue);
+			var filter2 = new sap.ui.model.Filter("Mcod1", sap.ui.model.FilterOperator.Contains, sValue);
+			var filter3 = new Filter("Kunnr", sap.ui.model.FilterOperator.Contains, sValue);
+
+			var oFilter = new Filter([filter1, filter2,filter3]);
+			var oBinding = oEvent.getSource().getBinding("items");
+			oBinding.filter(oFilter, sap.ui.model.FilterType.Application);
 		},
 		onCalculate: function(e) {
 			var selectedArray = [];

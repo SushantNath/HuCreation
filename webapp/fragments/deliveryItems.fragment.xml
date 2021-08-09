@@ -46,11 +46,11 @@
 									<ObjectIdentifier title="{}" text="{inboundTableModel>Salesorg}"/>
 									<Text text="{inboundTableModel>DeliveryNo}"/>
 									<Text text="{inboundTableModel>Externaldelno}"/>
-									<Text text="{inboundTableModel>Soldtoparty}"/>
+									<Input value="{inboundTableModel>Soldtoparty}"/>
 									<Text text="{inboundTableModel>Shiptoparty}"/>
 									<Text text="{inboundTableModel>Imminvoiceno}"/>
 									<Text text="{inboundTableModel>Imminvreversalno}"/>
-									<Text text="{inboundTableModel>Revenueinvoice}"/>
+									<Input value="{inboundTableModel>Revenueinvoice}"/>
 								
 								</cells>
 							</ColumnListItem>
