@@ -142,13 +142,6 @@ sap.ui.define([
 
 				success: function (oData, Response) {
 
-					// var revInvModel = new sap.ui.model.json.JSONModel();
-					// oView.setModel(revInvModel, "revInvoiceModel");
-					// oView.getModel("revInvoiceModel").setProperty("/revInvoiceSet", oData.results);
-
-					// var immInvoiceModel = new sap.ui.model.json.JSONModel(oData);
-					// 	that.getView().setModel(immInvoiceModel, "immInvoiceData");
-					// 	immInvoiceModel.setProperty("/immInvoiceSet", oData.results);
 
 					var shipToModel = new sap.ui.model.json.JSONModel();
 					oView.setModel(shipToModel, "shipToModel");
