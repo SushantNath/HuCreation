@@ -22,6 +22,15 @@ sap.ui.define([
 			var materialCode = this.getView().byId("materialCodeId").getValue();
 			var batchNumber = this.getView().byId("batchNumberId").getValue();
 			var huValue = this.getView().byId("huId").getSelected();
+			
+			if (huValue === true) {
+				
+				huValue = "X";
+			}
+			else{
+				
+				huValue = "";	
+			}
 
 			if (inboundDelivery === "" && asnNumber === "") {
 
@@ -40,30 +49,30 @@ sap.ui.define([
 			// 	var huValueFilter = new sap.ui.model.Filter("Salesorg", sap.ui.model.FilterOperator.EQ, huValue);
 			// aFilterData.push(inboundDeliveryFilter, asnNumberFilter, materialCodeFilter, batchNumberFilter,huValueFilter);
 
-			var shipToFilter = new sap.ui.model.Filter("Shiptoparty", sap.ui.model.FilterOperator.EQ, "");
-			var soldToFilter = new sap.ui.model.Filter("Soldtoparty", sap.ui.model.FilterOperator.EQ, asnNumber);
-			var extDelFilter = new sap.ui.model.Filter("Externaldelno", sap.ui.model.FilterOperator.EQ, materialCode);
+			var deliveryFilter = new sap.ui.model.Filter("Vbeln", sap.ui.model.FilterOperator.EQ, inboundDelivery);
+			var asnFilter = new sap.ui.model.Filter("Asn", sap.ui.model.FilterOperator.EQ, asnNumber);
+			var materialFilter = new sap.ui.model.Filter("Charg", sap.ui.model.FilterOperator.EQ, materialCode);
 
-			var immInvFilter = new sap.ui.model.Filter("Imminvoicetype", sap.ui.model.FilterOperator.EQ, "ZF30");
-			var salesOrgFilter = new sap.ui.model.Filter("Salesorg", sap.ui.model.FilterOperator.EQ, "");
-			var podStatusFilter = new sap.ui.model.Filter("Poddelstat", sap.ui.model.FilterOperator.EQ, "A");
-			var dateFromGI = "1900-01-01";
-			var dateToGI = "9999-12-31";
-			var dateFromGIFilter = new sap.ui.model.Filter("Goodsissuedate", sap.ui.model.FilterOperator.GE, Formatter.formatterDateAllOrders(
-				dateFromGI));
+			var batchFilter = new sap.ui.model.Filter("Matnr", sap.ui.model.FilterOperator.EQ, batchNumber);
+			var huValueFilter = new sap.ui.model.Filter("HuFlag", sap.ui.model.FilterOperator.EQ, huValue);
+			console.log("Hu value filter is",huValueFilter);
+			// var podStatusFilter = new sap.ui.model.Filter("Poddelstat", sap.ui.model.FilterOperator.EQ, "A");
+			// var dateFromGI = "1900-01-01";
+			// var dateToGI = "9999-12-31";
+			// var dateFromGIFilter = new sap.ui.model.Filter("Goodsissuedate", sap.ui.model.FilterOperator.GE, Formatter.formatterDateAllOrders(
+			// 	dateFromGI));
 
-			var dateToGIFilter = new sap.ui.model.Filter("Goodsissuedate", sap.ui.model.FilterOperator.LE, Formatter.formatterDateAllOrders(
-				dateToGI));
-			var outboundDelFilterSingle = new sap.ui.model.Filter("DeliveryNo", sap.ui.model.FilterOperator.EQ, "");
-			aFilterData.push(outboundDelFilterSingle);
+			// var dateToGIFilter = new sap.ui.model.Filter("Goodsissuedate", sap.ui.model.FilterOperator.LE, Formatter.formatterDateAllOrders(
+			// 	dateToGI));
+			// var outboundDelFilterSingle = new sap.ui.model.Filter("DeliveryNo", sap.ui.model.FilterOperator.EQ, "");
+		//	aFilterData.push(outboundDelFilterSingle);
 
-			aFilterData.push(shipToFilter, soldToFilter, extDelFilter, immInvFilter, dateFromGIFilter, dateToGIFilter, salesOrgFilter,
-				podStatusFilter);
+			aFilterData.push(deliveryFilter, asnFilter, materialFilter, batchFilter,huValueFilter);
 
 			var oModel = this.getView().getModel("inboundModel");
 			var that = this;
 			sap.ui.core.BusyIndicator.hide();
-			oModel.read("/DeliverySet", {
+			oModel.read("/DEL_GETSet", {
 
 				success: function(oData, Response) {
 

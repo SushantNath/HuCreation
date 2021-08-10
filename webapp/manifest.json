@@ -15,7 +15,7 @@
 		},
 		"dataSources": {
 			"inboundDatasource": {
-				"uri": "/sap/opu/odata/sap/ZOTC_DELIVERY_COGS_REVNU_REC_SRV",
+				"uri": "/sap/opu/odata/sap/ZEWMHU_DETAILS_SRV",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
@@ -23,14 +23,8 @@
 					"defaultBindingMode": "TwoWay",
 					"defaultCountMode": "None"
 				}
-			},
-			"Northwind": {
-				"uri": "/sap/opu/odata/iwbep/GWSAMPLE_BASIC/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0"
-				}
 			}
+		
 		}
 	},
 	"sap.ui": {
@@ -83,10 +77,8 @@
 			},
 			"inboundModel": {
 				"dataSource": "inboundDatasource"
-			},
-			"northwindModel": {
-				"dataSource": "northwindDatasource"
 			}
+		
 		},
 		"resources": {
 			"css": [
