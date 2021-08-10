@@ -24,7 +24,6 @@
 					"defaultCountMode": "None"
 				}
 			}
-		
 		}
 	},
 	"sap.ui": {
@@ -78,7 +77,6 @@
 			"inboundModel": {
 				"dataSource": "inboundDatasource"
 			}
-		
 		},
 		"resources": {
 			"css": [

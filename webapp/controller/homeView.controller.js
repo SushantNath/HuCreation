@@ -41,13 +41,6 @@ sap.ui.define([
 			var searchArray = [];
 			var aFilterData = [];
 
-			// 			var inboundDeliveryFilter = new sap.ui.model.Filter("Shiptoparty", sap.ui.model.FilterOperator.EQ, inboundDelivery);
-			// 	var asnNumberFilter = new sap.ui.model.Filter("Soldtoparty", sap.ui.model.FilterOperator.EQ, asnNumber);
-			// 	var materialCodeFilter = new sap.ui.model.Filter("Externaldelno", sap.ui.model.FilterOperator.EQ, materialCode);
-
-			// 	var batchNumberFilter = new sap.ui.model.Filter("Imminvoicetype", sap.ui.model.FilterOperator.EQ, batchNumber);
-			// 	var huValueFilter = new sap.ui.model.Filter("Salesorg", sap.ui.model.FilterOperator.EQ, huValue);
-			// aFilterData.push(inboundDeliveryFilter, asnNumberFilter, materialCodeFilter, batchNumberFilter,huValueFilter);
 
 			var deliveryFilter = new sap.ui.model.Filter("Vbeln", sap.ui.model.FilterOperator.EQ, inboundDelivery);
 			var asnFilter = new sap.ui.model.Filter("Asn", sap.ui.model.FilterOperator.EQ, asnNumber);
@@ -55,19 +48,11 @@ sap.ui.define([
 
 			var batchFilter = new sap.ui.model.Filter("Matnr", sap.ui.model.FilterOperator.EQ, batchNumber);
 			var huValueFilter = new sap.ui.model.Filter("HuFlag", sap.ui.model.FilterOperator.EQ, huValue);
-		//	console.log("Hu value filter is",huValueFilter);
-			// var podStatusFilter = new sap.ui.model.Filter("Poddelstat", sap.ui.model.FilterOperator.EQ, "A");
-			// var dateFromGI = "1900-01-01";
-			// var dateToGI = "9999-12-31";
-			// var dateFromGIFilter = new sap.ui.model.Filter("Goodsissuedate", sap.ui.model.FilterOperator.GE, Formatter.formatterDateAllOrders(
-			// 	dateFromGI));
+	
 
-			// var dateToGIFilter = new sap.ui.model.Filter("Goodsissuedate", sap.ui.model.FilterOperator.LE, Formatter.formatterDateAllOrders(
-			// 	dateToGI));
-			// var outboundDelFilterSingle = new sap.ui.model.Filter("DeliveryNo", sap.ui.model.FilterOperator.EQ, "");
-		//	aFilterData.push(outboundDelFilterSingle);
-
-			aFilterData.push(deliveryFilter, asnFilter, materialFilter, batchFilter,huValueFilter);
+		aFilterData.push(deliveryFilter, asnFilter, materialFilter, batchFilter,huValueFilter);
+			
+			
 
 			var oModel = this.getView().getModel("inboundModel");
 			var that = this;

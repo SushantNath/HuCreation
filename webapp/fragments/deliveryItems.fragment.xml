@@ -43,14 +43,14 @@
 						<items>
 							<ColumnListItem>
 								<cells>
-									<ObjectIdentifier title="{}" text="{inboundTableModel>Salesorg}"/>
-									<Text text="{inboundTableModel>DeliveryNo}"/>
-									<Text text="{inboundTableModel>Externaldelno}"/>
-									<Input value="{inboundTableModel>Soldtoparty}"/>
-									<Text text="{inboundTableModel>Shiptoparty}"/>
-									<Text text="{inboundTableModel>Imminvoiceno}"/>
-									<Text text="{inboundTableModel>Imminvreversalno}"/>
-									<Input value="{inboundTableModel>Revenueinvoice}"/>
+									<ObjectIdentifier title="{}" text="{inboundTableModel>Material}"/>
+									<Text text="{inboundTableModel>Desc}"/>
+									<Text text="{inboundTableModel>Batch}"/>
+									<Input value="{inboundTableModel>NumHu}"/>
+									<Text text="{inboundTableModel>Quan}"/>
+									<Text text="{inboundTableModel>Unit}"/>
+									<Text text="{inboundTableModel>SamQty}"/>
+									<Input value="{inboundTableModel>HuQty}"/>
 								
 								</cells>
 							</ColumnListItem>
