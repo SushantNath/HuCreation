@@ -55,7 +55,7 @@ sap.ui.define([
 
 			var batchFilter = new sap.ui.model.Filter("Matnr", sap.ui.model.FilterOperator.EQ, batchNumber);
 			var huValueFilter = new sap.ui.model.Filter("HuFlag", sap.ui.model.FilterOperator.EQ, huValue);
-			console.log("Hu value filter is",huValueFilter);
+		//	console.log("Hu value filter is",huValueFilter);
 			// var podStatusFilter = new sap.ui.model.Filter("Poddelstat", sap.ui.model.FilterOperator.EQ, "A");
 			// var dateFromGI = "1900-01-01";
 			// var dateToGI = "9999-12-31";
