@@ -61,12 +61,21 @@ sap.ui.define([
 
 				success: function(oData, Response) {
 
+					if(oData.results[0].Gvmsg === ""){
+
 					var inboundTableModel = new sap.ui.model.json.JSONModel(oData);
 					that.getView().setModel(inboundTableModel, "inboundTableModel");
 					that.getView().getModel("inboundTableModel").setProperty("/inboundTableSet", oData.results);
 
 					sap.ui.core.BusyIndicator.hide();
 					console.log("Inside extract button success", oData.results);
+
+					}
+
+					else{
+
+						MessageBox.show(oData.results[0].Gvmsg);
+					}
 				},
 				error: function(oData, Response, oError) {
 					console.log("Inside extract butoon error");

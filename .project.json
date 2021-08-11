@@ -45,7 +45,7 @@
     "targetFolder": "dist",
     "excludedFolders": [],
     "excludedFiles": [],
-    "lastBuildDateTime": "Tue, 10 Aug 2021 06:24:39 GMT"
+    "lastBuildDateTime": "Tue, 10 Aug 2021 16:24:03 GMT"
   },
   "deploy": {
     "destination": "DE4",
