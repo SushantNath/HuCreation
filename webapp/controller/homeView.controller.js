@@ -4,10 +4,10 @@ sap.ui.define([
 	"sap/m/MessageToast",
 	"com/sap/huCreationinboundHu/utilities/Formatter",
 	"sap/ui/core/UIComponent",
-		"sap/ui/model/Filter",
+	"sap/ui/model/Filter",
 	'sap/ui/model/Sorter'
-	
-], function(Controller, MessageBox, MessageToast, Formatter,UIComponent,Filter, Sorter) {
+
+], function(Controller, MessageBox, MessageToast, Formatter, UIComponent, Filter, Sorter) {
 	"use strict";
 
 	return Controller.extend("com.sap.huCreationinboundHu.controller.homeView", {
@@ -22,14 +22,13 @@ sap.ui.define([
 			var materialCode = this.getView().byId("materialCodeId").getValue();
 			var batchNumber = this.getView().byId("batchNumberId").getValue();
 			var huValue = this.getView().byId("huId").getSelected();
-			
+
 			if (huValue === true) {
-				
+
 				huValue = "X";
-			}
-			else{
-				
-				huValue = "";	
+			} else {
+
+				huValue = "";
 			}
 
 			if (inboundDelivery === "" && asnNumber === "") {
@@ -41,18 +40,14 @@ sap.ui.define([
 			var searchArray = [];
 			var aFilterData = [];
 
-
 			var deliveryFilter = new sap.ui.model.Filter("Vbeln", sap.ui.model.FilterOperator.EQ, inboundDelivery);
 			var asnFilter = new sap.ui.model.Filter("Asn", sap.ui.model.FilterOperator.EQ, asnNumber);
 			var materialFilter = new sap.ui.model.Filter("Charg", sap.ui.model.FilterOperator.EQ, materialCode);
 
 			var batchFilter = new sap.ui.model.Filter("Matnr", sap.ui.model.FilterOperator.EQ, batchNumber);
 			var huValueFilter = new sap.ui.model.Filter("HuFlag", sap.ui.model.FilterOperator.EQ, huValue);
-	
 
-		aFilterData.push(deliveryFilter, asnFilter, materialFilter, batchFilter,huValueFilter);
-			
-			
+			aFilterData.push(deliveryFilter, asnFilter, materialFilter, batchFilter, huValueFilter);
 
 			var oModel = this.getView().getModel("inboundModel");
 			var that = this;
@@ -61,18 +56,16 @@ sap.ui.define([
 
 				success: function(oData, Response) {
 
-					if(oData.results[0].Gvmsg === ""){
+					if (oData.results[0].Gvmsg === "") {
 
-					var inboundTableModel = new sap.ui.model.json.JSONModel(oData);
-					that.getView().setModel(inboundTableModel, "inboundTableModel");
-					that.getView().getModel("inboundTableModel").setProperty("/inboundTableSet", oData.results);
+						var inboundTableModel = new sap.ui.model.json.JSONModel(oData);
+						that.getView().setModel(inboundTableModel, "inboundTableModel");
+						that.getView().getModel("inboundTableModel").setProperty("/inboundTableSet", oData.results);
 
-					sap.ui.core.BusyIndicator.hide();
-					console.log("Inside extract button success", oData.results);
+						sap.ui.core.BusyIndicator.hide();
+						console.log("Inside extract button success", oData.results);
 
-					}
-
-					else{
+					} else {
 
 						MessageBox.show(oData.results[0].Gvmsg);
 					}
@@ -112,10 +105,10 @@ sap.ui.define([
 			}
 
 		},
-		
-			/* Logic to fetch filter options for Ship To */
 
-		handleValueShipTo: function (oEvent) {
+		/* Logic to fetch filter options for Ship To */
+
+		handleValueShipTo: function(oEvent) {
 
 			this.loadShipTo();
 			var oView = this.getView();
@@ -136,15 +129,14 @@ sap.ui.define([
 
 		},
 
-		loadShipTo: function () {
+		loadShipTo: function() {
 			var oModel = this.getView().getModel("inboundModel");
 			var that = this;
 			var oView = this.getView();
 			sap.ui.core.BusyIndicator.show();
 			oModel.read("/DebiaSet", {
 
-				success: function (oData, Response) {
-
+				success: function(oData, Response) {
 
 					var shipToModel = new sap.ui.model.json.JSONModel();
 					oView.setModel(shipToModel, "shipToModel");
@@ -153,7 +145,7 @@ sap.ui.define([
 					console.log("Inside Success function revenue invoice", oData.results);
 				},
 
-				error: function (oData, Response, oError) {
+				error: function(oData, Response, oError) {
 					console.log("Inside Error function");
 				}
 
@@ -164,14 +156,14 @@ sap.ui.define([
 		},
 
 		//Code to hadle serach inside revenue invoice value help
-		handleSearchShipTo: function (oEvent) {
+		handleSearchShipTo: function(oEvent) {
 			var sValue = oEvent.getParameter("value");
-            
+
 			var filter1 = new Filter("Land1", sap.ui.model.FilterOperator.Contains, sValue);
 			var filter2 = new sap.ui.model.Filter("Mcod1", sap.ui.model.FilterOperator.Contains, sValue);
 			var filter3 = new Filter("Kunnr", sap.ui.model.FilterOperator.Contains, sValue);
 
-			var oFilter = new Filter([filter1, filter2,filter3]);
+			var oFilter = new Filter([filter1, filter2, filter3]);
 			var oBinding = oEvent.getSource().getBinding("items");
 			oBinding.filter(oFilter, sap.ui.model.FilterType.Application);
 		},
@@ -179,30 +171,29 @@ sap.ui.define([
 			var selectedArray = [];
 			var invTableLength = this.getView().byId("idInboundsTable").getSelectedItems();
 
-		/*	if (invTableLength.length > 0) {
-				console.log("table length > 0");
-				var message1 = "Do you want to proceed with calculation of HUs?";
+			/*	if (invTableLength.length > 0) {
+					console.log("table length > 0");
+					var message1 = "Do you want to proceed with calculation of HUs?";
 
-				MessageBox.show(message1, {
-					title: "Message",
+					MessageBox.show(message1, {
+						title: "Message",
 
-					actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+						actions: [MessageBox.Action.YES, MessageBox.Action.NO],
 
-					onClose: function(sAction) {
-						MessageToast.show("Action selected: " + sAction);
-						console.log("Inside close for message box");
-					}
-				});
-			} else {
+						onClose: function(sAction) {
+							MessageToast.show("Action selected: " + sAction);
+							console.log("Inside close for message box");
+						}
+					});
+				} else {
 
-				MessageBox.show(this.getOwnerComponent().getModel("i18n").getResourceBundle().getText("invoiceSelection"));
-			} */
-			
+					MessageBox.show(this.getOwnerComponent().getModel("i18n").getResourceBundle().getText("invoiceSelection"));
+				} */
+
 			var oRouter = UIComponent.getRouterFor(this);
-				oRouter.navTo("huCreationPattern");
+			oRouter.navTo("huCreationPattern");
 
 		}
-		
 
 	});
 });
